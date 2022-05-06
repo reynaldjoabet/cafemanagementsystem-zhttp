@@ -7,7 +7,7 @@ val flywayVersion      = "8.5.1"
 val logbackVersion= "1.2.11"
 val zhttpVersion= "2.0.0-RC4"
 val zioJsonVersion="0.1.5"
-val quillVersion="3.16.4"
+val quillVersion="3.17.0-RC2"
 val h2Version="2.1.212"
 val postgresVersion = "42.3.2"
 val jwtCoreVersion="9.0.5"
@@ -44,9 +44,9 @@ val jwtDependencies=Seq(
 "com.github.jwt-scala" %% "jwt-core" % jwtCoreVersion
 )
 
-//val postgresDependencies=Seq(
-    //"org.postgresql"   % "postgresql" % postgresVersion
-//)
+val postgresDependencies=Seq(
+    "org.postgresql"   % "postgresql" % postgresVersion
+)
 val httpDependencies= Seq(
     "io.d11"          %% "zhttp" %zhttpVersion
 )
@@ -54,6 +54,6 @@ val httpDependencies= Seq(
 lazy val backend = (project in file("."))
   .settings(
     libraryDependencies ++=quillDependencies ++ jsonDependencies ++ loggingDependencies 
-    ++httpDependencies ++ jwtDependencies
+    ++httpDependencies ++ jwtDependencies++postgresDependencies
     ++ flyDependencies++ zioConfigDependencies ++zioDependencies
   )
